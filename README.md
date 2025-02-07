@@ -13,7 +13,7 @@ This project simulates a quadcopter using MATLAB and Simulink. It integrates Pyt
 ### 1. Install Python 3.8 (64-bit)
 Since MATLAB R2021a only supports Python 3.8 (64-bit), ensure you have it installed.
 
-1. Download Python 3.8 (32-bit) from: [Python Releases](https://www.python.org/downloads/release/python-380/)
+1. Download Python 3.8 (64-bit) from: [Python Releases](https://www.python.org/downloads/release/python-380/)
 2. Install it and ensure it is available in your PATH.
 3. Verify installation:
    ```sh
