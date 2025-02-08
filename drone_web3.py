@@ -2,9 +2,9 @@ from web3 import Web3
 import time
 
 # Web3 Configuration
-RPC_URL = "https://your_rpc_url"  # Replace with actual RPC provider
-CONTRACT_ADDRESS = "0xYourContractAddress"
-PRIVATE_KEY = "YourPrivateKey"  # Private key of the drone
+RPC_URL = "https://sepolia.drpc.org" #sepolia
+CONTRACT_ADDRESS = "0xEed75413d7E0142d032d403110177FaE42790166"
+PRIVATE_KEY = "YourPrivateKey"  
 DRONE_ADDRESS = "0xYourDroneWallet"
 
 # Connect to blockchain
