@@ -11,6 +11,7 @@ contract DroneLanding {
     }
 
     mapping(address => LandingRequest) public requests;
+    address[] public requestList; // Stores all addresses with requests
 
     event LandingRequested(address drone);
     event LandingApproved(address drone, string landingZone);
@@ -29,13 +30,14 @@ contract DroneLanding {
             landingZone: ""
         });
 
+        requestList.push(msg.sender); // Track the new request
+
         emit LandingRequested(msg.sender);
     }
 
     function autoApproveLanding(address drone) external {
         require(requests[drone].drone != address(0), "No request found");
 
-        // Auto-approve with external script
         requests[drone].approved = true;
         requests[drone].landingZone = "Zone A"; // Default landing zone
 
@@ -50,13 +52,24 @@ contract DroneLanding {
     function resetLandingRequests() external {
         require(msg.sender == owner, "Only owner can reset landing requests");
 
-        // Reset all drone requests
-        for (uint256 i = 0; i < 256; i++) {
-            if (requests[address(uint160(i))].drone != address(0)) {
-                delete requests[address(uint160(i))];
-            }
+        // Iterate over all stored drone addresses and delete requests
+        for (uint256 i = 0; i < requestList.length; i++) {
+            delete requests[requestList[i]];
         }
 
+        // Reset the request list
+        delete requestList;
+
         emit LandingRequestsReset();
+    }
+
+     function getAllRequests() external view returns (LandingRequest[] memory) {
+        LandingRequest[] memory allRequests = new LandingRequest[](requestList.length);
+
+        for (uint256 i = 0; i < requestList.length; i++) {
+            allRequests[i] = requests[requestList[i]];
+        }
+
+        return allRequests;
     }
 }

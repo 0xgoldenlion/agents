@@ -3,7 +3,7 @@ import time
 
 # Web3 Configuration
 RPC_URL = "https://sepolia.drpc.org" #sepolia
-CONTRACT_ADDRESS = "0xEed75413d7E0142d032d403110177FaE42790166"
+CONTRACT_ADDRESS = "0x37B37f11c1Ad921739101849B357BA7ab7C8C592"
 PRIVATE_KEY = "YourPrivateKey"  
 DRONE_ADDRESS = "0xYourDroneWallet"
 
@@ -11,13 +11,16 @@ DRONE_ADDRESS = "0xYourDroneWallet"
 web3 = Web3(Web3.HTTPProvider(RPC_URL))
 account = web3.eth.account.from_key(PRIVATE_KEY)
 
+# Connect to blockchain
+web3 = Web3(Web3.HTTPProvider(RPC_URL))
+account = web3.eth.account.from_key(PRIVATE_KEY)
+
 # Load contract ABI
 contract_abi = '[{"inputs":[],"name":"requestLanding","outputs":[],"stateMutability":"nonpayable","type":"function"},' \
-               '{"inputs":[{"internalType":"address","name":"drone","type":"address"},{"internalType":"string","name":"zone","type":"string"}],' \
-               '"name":"approveLanding","outputs":[],"stateMutability":"nonpayable","type":"function"},' \
                '{"inputs":[{"internalType":"address","name":"drone","type":"address"}],"name":"getLandingStatus",' \
                '"outputs":[{"internalType":"bool","name":"","type":"bool"},{"internalType":"string","name":"","type":"string"}],' \
                '"stateMutability":"view","type":"function"}]'
+
 
 contract = web3.eth.contract(address=CONTRACT_ADDRESS, abi=contract_abi)
 
