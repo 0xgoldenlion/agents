@@ -30,8 +30,8 @@ contract_abi = '[{"inputs":[],"name":"requestLanding","outputs":[],"stateMutabil
 contract = web3.eth.contract(address=CONTRACT_ADDRESS, abi=contract_abi)
 
 def auto_approve_requests():
-    """ AI agent that monitors requests and auto-approves landings """
-    print("AI Agent started: Monitoring landing requests...")
+    """  agent that monitors requests and auto-approves landings """
+    print(" Agent started: Monitoring landing requests...")
     
     while True:
         try:
